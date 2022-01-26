@@ -32,6 +32,7 @@
     "homepage": "https://github.com/naldomadeira/waves-api#readme",
     "devDependencies": {
         "@types/axios": "^0.14.0",
+        "@types/config": "^0.0.41",
         "@types/express": "^4.17.13",
         "@types/jest": "^27.4.0",
         "@types/module-alias": "^2.0.1",
@@ -51,6 +52,7 @@
         "@overnightjs/core": "^1.7.6",
         "axios": "^0.25.0",
         "body-parser": "^1.19.1",
+        "config": "^3.3.7",
         "express": "^4.17.2",
         "module-alias": "^2.2.2"
     }
