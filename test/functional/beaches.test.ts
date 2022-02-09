@@ -1,10 +1,23 @@
 import { Beach } from '@src/models/beach';
+import { User } from '@src/models/user';
+import AuthService from '@src/services/auth';
 import { SetupServer as Server } from '@src/server';
 
 describe('Beaches functional tests', () => {
-    beforeAll(async () => {
+    const defaultUser = {
+        name: 'John Doe',
+        email: 'john2@mail.com',
+        password: '1234',
+    };
+
+    let token: string;
+    beforeEach(async () => {
         await Beach.deleteMany({});
+        await User.deleteMany({});
+        const user = await new User(defaultUser).save();
+        token = AuthService.generateToken(user.toJSON());
     });
+
     describe('When creating a new Beach', () => {
         it('should create a beach with sucess', async () => {
             const newBeach = {
@@ -16,6 +29,7 @@ describe('Beaches functional tests', () => {
 
             const response = await global.testRequest
                 .post('/beaches')
+                .set({ 'x-access-token': token })
                 .send(newBeach);
             expect(response.status).toBe(201);
             //Object containing matches the keys and values, even if includes other keys such as id.
@@ -31,6 +45,7 @@ describe('Beaches functional tests', () => {
             };
             const response = await global.testRequest
                 .post('/beaches')
+                .set({ 'x-access-token': token })
                 .send(newBeach);
 
             expect(response.status).toBe(422);
@@ -48,6 +63,7 @@ describe('Beaches functional tests', () => {
             await new Server().close();
             const response = await global.testRequest
                 .post('/beaches')
+                .set({ 'x-access-token': token })
                 .send(newBeach);
 
             expect(response.status).toBe(500);
