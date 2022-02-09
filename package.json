@@ -7,13 +7,16 @@
         "build": "tsc",
         "lint": "eslint ./src ./test --ext .ts",
         "lint:fix": "eslint ./src ./test --ext .ts --fix",
-        "start": "yarn build && node dist/src/index.js",
+        "start": "node dist/src/index.js",
         "test": "yarn test:unit && yarn test:functional",
         "start:dev": "ts-node-dev 'src/index.ts'",
         "test:functional": "jest --projects ./test --runInBand",
         "style:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
         "style:fix": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
         "test:unit": "jest"
+    },
+    "engines": {
+        "node": "12"
     },
     "repository": {
         "type": "git",
