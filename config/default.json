@@ -4,10 +4,14 @@
         "database": {
             "mongoUrl": "mongodb://localhost:27017/waves-api"
         },
+        "auth": {
+            "key": "some-key",
+            "tokenExpiresIn": "7d"
+        },
         "resources": {
             "StormGlass": {
                 "apiUrl": "https://api.stormglass.io/v2",
-                "apiToken": "fake-token"
+                "apiToken": "08ad6cba-8311-11ec-823d-0242ac130002-08ad6d28-8311-11ec-823d-0242ac130002"
             }
         }
     }
