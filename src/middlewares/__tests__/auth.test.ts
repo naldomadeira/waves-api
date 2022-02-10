@@ -15,7 +15,7 @@ describe('AuthMiddleware', () => {
         expect(nextFake).toHaveBeenCalled;
     });
 
-    it.only('should return UNAUTHORIZED if there is a problem on the token verification', () => {
+    it('should return UNAUTHORIZED if there is a problem on the token verification', () => {
         const reqFake = {
             headers: {
                 'x-access-token': 'invalid token',
